@@ -10,7 +10,10 @@ io.on('connection', function (socket) {
 
     socket.on('message', function (message) {
         console.log('Message receive: '+ message.text );
-        socket.broadcast.emit('message', message);
+        //emit will not show not on my own
+        //socket.broadcast.emit('message', message);
+
+        io.emit('message', message);
     });
 
     socket.emit('message', {
